@@ -10,5 +10,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './list-friends.component.css'
 })
 export class ListFriendsComponent {
+ listFriendsAuth:boolean = false;
 
+ constructor(){
+  setTimeout(() => {
+    this.listFriendsAuth = !this.listFriendsAuth;
+  }, 3000);
+ }
 }

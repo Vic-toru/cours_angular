@@ -13,6 +13,7 @@ export class OneFriendComponent {
   oneFriendStatus:string = 'Online';
   oneFriendBio:string = "Je suis le refrain d'une bonne chanson paillarde mixé avec la chute d'une blague bien beauf !";
   oneFriendXss:string = "<script>alert('Hello, XSS')</script>";
+  oneFriendImg:string = "https://picsum.photos/300/300";
 
   getOneFriendStatus(){
     return this.oneFriendStatus;
