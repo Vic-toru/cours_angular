@@ -1,0 +1,16 @@
+<div class="container" style="padding-top: 50px;">
+    <div class="card" style="width: 20rem; display: flex; align-items: center; margin: auto;">
+      <div class="card-body">
+        <h5 class="card-title">{{ oneFriendName }} - id : {{ oneFriendId }}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p class="card-text" style="text-align: center;"><strong>Age : </strong>{{ oneFriendAge }} ans</p>
+        </li>
+        <li class="list-group-item">
+          <p class="card-text" style="text-align: center;"><strong>Ma bio :</strong> {{ oneFriendBio }}</p>
+        </li>
+        <li class="list-group-item" style="text-align: center;"><strong>Status :</strong> {{ getOneFriendStatus() }} </li>
+      </ul>
+    </div>
+  </div>
