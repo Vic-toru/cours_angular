@@ -1,0 +1,13 @@
+.container {
+    width: 100vw;
+    text-align: center;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column
+}
+
+.second-part{
+    display: flex;
+    justify-content: space-around
+}

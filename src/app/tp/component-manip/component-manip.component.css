@@ -1,0 +1,6 @@
+.parent-component{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+}
