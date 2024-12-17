@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-data-binding',
   imports: [FormsModule],
@@ -9,9 +8,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './data-binding.component.css'
 })
 export class DataBindingComponent {
-  userName:string = "";
+  userName:string = "Roronoa Zorro";
 
   resetUser(){
-    this.userName = ""
+      this.userName = "";
   }
 }
