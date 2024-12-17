@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 })
 export class OneFriendComponent {
   oneFriendId:number = Math.round(Math.random()*10) ;
-  oneFriendName:string = 'La grosse mite à Dudule';
+  oneFriendName:string = 'Yuijiro Hanma';
   oneFriendAge:number = Math.round(Math.random()*75);
   oneFriendStatus:string = 'Online';
-  oneFriendBio:string = "Je suis le refrain d'une bonne chanson paillarde mixé avec la chute d'une blague bien beauf !";
+  oneFriendBio:string = "Je suis une menace pour la planète entière, mouahahahahahah";
   oneFriendXss:string = "<script>alert('Hello, XSS')</script>";
   oneFriendImg:string = "https://picsum.photos/300/300";
 

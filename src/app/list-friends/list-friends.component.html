@@ -2,7 +2,17 @@
     <br>
     <h2>List Friends (Text Interpolation) :</h2>
     <br>
-    <input type="button" value="Click me" [disabled]="listFriendsAuth">
+    <input type="text" name="etat">
+    <p>{{listFriendsCreationStatus}}</p>
+    <br>
+    <input type="button" class="btn btn-success" value="Ajout ami" (click)="onAddingFriends()" (input)="onUpdateFriendsList($event)">
+    <br>
+    <input [(ngModel)]="listFriendsInputText" type="text" class="form-control w-50 m-auto" placeholder="Nom Ami" aria-label="Username" placeholder="Le nom de ton copaing">
+    <br>
+    <p>{{listFriendsInputText}}</p>
+    <br>
+    <input type="button" class="btn btn-light" value="Je me désactive au bout de 3secondes" [disabled]="listFriendsAuth">
     <br>
     <app-one-friend></app-one-friend>
+    <br>
 </div>
