@@ -3,10 +3,10 @@
     <h2>List Friends (Text Interpolation) :</h2>
     <br>
     <input type="text" name="etat" [(ngModel)]="leFriend">
-    <!-- <p>{{listFriendsCreationStatus}}</p> -->
+    <p>{{listFriendsCreationStatus}}</p>
     <br>
-    <p *ngIf="listFriendCreated, else noFriend" class="text-danger" >Un ami a été crée, il s'agit de {{leFriend}}</p>
-    <ng-template #noFriend class="text-danger">Pas encore d'ami 😢</ng-template>
+    <p *ngIf="listFriendCreated, else noFriend" class="text-success" >Un ami a été crée, il s'agit de {{leFriend}}</p>
+    <ng-template #noFriend ><p class="text-danger">Pas encore d'ami 😢</p></ng-template>
     <br><br>
     <input type="button" class="btn btn-success" value="Ajout ami" (click)="onAddingFriends()" (input)="onUpdateFriendsList($event)">
     <br>

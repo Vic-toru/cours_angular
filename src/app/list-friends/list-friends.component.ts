@@ -25,7 +25,7 @@ export class ListFriendsComponent {
  listFriendCreated:boolean= false;
 
  onAddingFriends():void{
-  // this.listFriendsCreationStatus = "Super, tu as un ami 🥳";
+  this.listFriendsCreationStatus = "Super, tu as un ami 🥳";
   this.listFriendCreated = true;
  };
 
