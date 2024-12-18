@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Blog Control Center</h1>
+    <app-add-article (articleAdded)="onAddArticle($event)"></app-add-article>
+    
+    <app-article-element 
+      *ngFor="let article of articles" 
+      [titre]="article.titre" 
+      [contenu]="article.contenu">
+    </app-article-element>
+  </div>

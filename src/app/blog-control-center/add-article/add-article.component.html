@@ -1,0 +1,17 @@
+<div class="card-container">
+    <form>
+        <div class="form-group">
+            <h3>Add-Article</h3>
+            <br>
+            <p>Ajoutez un article ou un brouillon ! </p>
+          <label for="titre article">Titre de l'article</label>
+          <input type="text" name="title" class="form-control" placeholder="Veuillez écrire un titre" [(ngModel)]="titre">
+        </div>
+        <div class="form-group">
+          <label for="contenu article">Contenu de l'article</label>
+          <textarea class="form-control" name="contenu" rows="5" cols="100" placeholder="Veuillez écrire le contenu de l'article"[(ngModel)]="contenu"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="addArticle()">Ajouter Article</button>
+        <button type="submit" class="btn btn-danger">Ajouter Brouillon</button>
+      </form>
+</div>
