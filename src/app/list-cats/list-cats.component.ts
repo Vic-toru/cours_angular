@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { CatComponent } from './cat/cat.component';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-list-cats',
@@ -14,4 +15,6 @@ export class ListCatsComponent {
     { name: 'Poppy', age: 12, email: 'laqueue@courte.com' },
     { name: 'Yoda', age: 6, email: 'yoda@sama.com' }
   ];
+
 }
+

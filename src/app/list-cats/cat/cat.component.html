@@ -1,9 +1,12 @@
 <div
 class="card"
 style="width: 20rem; display: flex; align-items: center; margin: auto"
+[ngStyle]="{ 'background-color': getColor() }"
 >
 <div class="card-body">
-  <h5 class="card-title">{{name}}</h5>
+  <h5 class="card-title"
+  [ngClass]="oneCatStyle == 'OFF' ? 'catOn' : 'catOff' "
+  >{{name}}</h5>
 
   <ul class="list-group list-group-flush">
     <li class="list-group-item" style="text-align: center">
