@@ -9,5 +9,6 @@ import { Input } from '@angular/core';
 })
 export class ArticleElementComponent {
   @Input() titre: string = ''; 
-  @Input() contenu: string = "";  
+  @Input() contenu: string = "";
+  @Input() date:string =''; 
 }

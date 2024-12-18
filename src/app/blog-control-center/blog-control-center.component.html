@@ -4,7 +4,8 @@
     
     <app-article-element 
       *ngFor="let article of articles" 
-      [titre]="article.titre" 
+      [titre]="article.titre"
+      [date]="article.date" 
       [contenu]="article.contenu">
     </app-article-element>
   </div>
