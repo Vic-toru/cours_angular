@@ -1,0 +1,13 @@
+<div class="container">
+<input type="button" value="Afficher Détails" class="btn btn-primary" (click)="afficher()"
+>
+<p
+[ngClass]="isDisplay === false ? 'displayOn' : 'displayOff' "
+>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque natus dolor ex corrupti quod sint? Impedit, molestiae maiores! 
+    Repudiandae vel recusandae dolores vitae maiores laudantium sunt minus harum reprehenderit sint.
+</p>
+<p class="tab"
+*ngFor="let item of tabLog; let i = index"
+[ngClass]="{ 'txtColor': i >= 4 }"
+[ngStyle]="{ 'background-color': i >= 4 ? 'cyan' : '' }">{{i}}</p>
+</div>

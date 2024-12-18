@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+.btn{
+    margin-top: 20px;
+}
+
+.displayOn{
+    display: block;
+}
+
+.displayOff{
+    display: none;
+}
+
+.tab{
+    width:80vw;
+    text-align: center;
+    border-radius: 15px;
+}
+.txtColor{
+    color:white;
+}
