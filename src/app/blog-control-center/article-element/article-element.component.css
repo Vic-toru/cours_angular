@@ -2,5 +2,17 @@
     border-radius: 15px;
     padding: 20px;
     margin: 15px;
-    width: 80vw;
+    width: 60vw;
+    background-color: lime;
+}
+.card-header{
+    background-color: aqua;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+}
+.content{
+    border-radius: 15px;
+    background-color: deeppink;
 }

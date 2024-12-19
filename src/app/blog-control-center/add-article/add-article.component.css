@@ -2,5 +2,11 @@
     border-radius: 15px;
     padding: 20px;
     background-color: darksalmon;
-    color: white;
+
+}
+.btn{
+    margin-top: 20px;
+}
+.btn-danger{
+    margin-left: 20px;
 }
