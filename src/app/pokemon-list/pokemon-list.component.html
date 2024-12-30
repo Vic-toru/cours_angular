@@ -1,8 +1,40 @@
-<div>
-    <div *ngIf="isLoading">Chargement...</div>
-    <div *ngIf="errorMessage">{{ errorMessage }}</div>
-    <div *ngFor="let pokemon of pokemons">
-      <h3>{{ pokemon.name }}</h3>
-      <img [src]="pokemon.image" [alt]="pokemon.name">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4" *ngFor="let pokemon of pokemons">
+      <div class="card text-center pokecard" style="padding: 20px">
+        <img
+          class="card-img-top"
+          [src]="isShiny ? pokemon.sprites.shiny : pokemon.sprites.regular"
+          [alt]="isShiny ? pokemon.sprites.shiny : pokemon.sprites.regular"
+        />
+        <div class="card-body">
+          <h5>#{{ pokemon.pokedex_id }} - {{ pokemon.name.fr }}</h5>
+          <div class="types">
+            <div
+              *ngFor="let type of pokemon.types"
+              class="elemType align-item-center"
+              [ngStyle]="{ 'background-color': colorType(type.name) }"
+            >
+              <p>
+                {{ type.name }}
+                <img [src]="type.image" [alt]="type.name" />
+              </p>
+            </div>
+          </div>
+          <button
+          class="btn btn-danger more"
+          [routerLink]="['/pokemon', pokemon.pokedex_id]">
+            <img class="pokeball" src="../assets/pokeball.png" alt="Informations sur {{ pokemon.name.fr }}">
+            Plus d'informations
+          </button>
+          <!-- <input
+            type="button"
+            value="Plus d'information"
+            class="btn btn-danger"
+            [routerLink]="['/pokemon', pokemon.pokedex_id]"
+          /> -->
+        </div>
+      </div>
     </div>
   </div>
+</div>

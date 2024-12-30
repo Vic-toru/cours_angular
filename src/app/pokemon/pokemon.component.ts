@@ -1,58 +1,56 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
-import { NgIf, NgFor } from '@angular/common';
-import { NgClass } from '@angular/common';
-import { NgStyle } from '@angular/common';
 import { Pokemon } from '../pokeTypes/pokeTypes.component';
-import { RouterLink } from '@angular/router';
-
-
-
+import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'app-pokemon-list',
-  imports: [NgFor, NgClass, NgStyle, RouterLink ],
-  templateUrl: './pokemon-list.component.html',
-  styleUrls: ['./pokemon-list.component.css'],
-  providers: [PokemonService]
+  selector: 'app-pokemon',
+  imports: [ NgFor, NgIf, NgStyle, NgClass
+  ],
+  templateUrl: './pokemon.component.html',
+  styleUrls: ['./pokemon.component.css'],
 })
+export class PokemonComponent implements OnInit {
+  pokemon: Pokemon | undefined;  
+  isShiny: boolean = false;
 
-
-export class PokemonListComponent implements OnInit {
-  pokemons: Pokemon[] = [];
-  isDisplay:boolean = false;
-  isShiny:boolean = false;
-  type: any;
-
-  constructor(private pokemonService: PokemonService) {
-
-
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private pokemonService: PokemonService
+  ) {}
 
   ngOnInit(): void {
-    this.loadPokemons();
-  }
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.loadPokemonDetails(id);
+    }
+  }  
 
-  async loadPokemons(){
-    this.pokemonService
-    .fetchPokemonList('https://tyradex.vercel.app/api/v1/gen/1')
-    .then((response) => {
-      this.pokemons = response;
-      console.log(response)
-    })
-    .catch((error) => {
-      console.error('Erreur lors de la récupération des Pokémon:', error);
-    });
-  }
-
-  afficherInfo(){
-    this.isDisplay= !this.isDisplay;
-  }
-
-  afficherShiny(){
-    this.isShiny= !this.isShiny;
+  async loadPokemonDetails(id: string) {
+    try {
+      const pokemons = await this.pokemonService.fetchPokemonList(
+        `https://tyradex.vercel.app/api/v1/pokemon/${id}`
+      );
+      console.log('Données récupérées :', pokemons);
+  
+      // Si l'API retourne un tableau avec un seul élément, on récupère le premier élément
+      if (pokemons && pokemons.length > 0) {
+        this.pokemon = pokemons[0];  // Récupérer le premier élément du tableau
+      } else {
+        console.error('Aucun Pokémon trouvé pour cet ID.');
+      }
+  
+    } catch (error) {
+      console.error('Erreur lors de la récupération des données :', error);
+    }
   }
   
+
+  toggleShiny() {
+    this.isShiny = !this.isShiny;
+  }
+
   colorType(type:string) :any {
     switch (type) {
       case 'Poison': 
@@ -111,5 +109,4 @@ export class PokemonListComponent implements OnInit {
         break;
     }
   }
-
 }

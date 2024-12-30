@@ -1,0 +1,95 @@
+<div class="container-fluid" *ngIf="pokemon; else loading">
+  <h2>Informations du Pokémon</h2>
+  <img
+    [src]="isShiny ? pokemon.sprites.shiny : pokemon.sprites.regular"
+    [alt]="pokemon.name.fr"
+  />
+  <div class="header">
+    <h3>#{{ pokemon.pokedex_id }} - {{ pokemon.name.fr }}</h3>
+    <input
+      class="btn btnShiny"
+      (click)="toggleShiny()"
+      [value]="isShiny ? 'Shiny' : 'Normal'"
+      [ngClass]="{ colorNormal: !isShiny, colorShiny: isShiny }"
+    />
+  </div>
+
+  <div class="card" style="width: 25rem">
+    <div class="card-header">Information générales</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="types">
+          <div
+            *ngFor="let type of pokemon.types"
+            class="elemType align-item-center"
+            [ngStyle]="{ 'background-color': colorType(type.name) }"
+          >
+            <p>
+              {{ type.name }}
+              <img [src]="type.image" [alt]="type.name" />
+            </p>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">Catégorie : {{ pokemon.category }}</li>
+      <li class="list-group-item">Taille : {{ pokemon.height }}</li>
+      <li class="list-group-item">Poids : {{ pokemon.weight }}</li>
+      <li class="list-group-item">
+        Taux de capture : {{ pokemon.catch_rate }}
+      </li>
+    </ul>
+  </div>
+  <div class="card" style="width: 25rem">
+    <div class="card-header">Talents</div>
+    <ul
+      class="list-group list-group-flush"
+      *ngFor="let talent of pokemon.talents"
+    >
+      <li class="list-group-item">{{ talent.name }}</li>
+    </ul>
+  </div>
+
+  <div class="card" style="width: 25rem">
+    <div class="card-header">Groupe d'oeufs</div>
+    <ul
+      class="list-group list-group-flush"
+      *ngFor="let group of pokemon.egg_groups"
+    >
+      <li class="list-group-item">{{ group }}</li>
+    </ul>
+  </div>
+
+  <div class="card" style="width: 25rem">
+    <div class="card-header">Sexe</div>
+    <p class="card-text text-center align-bottom sexTitle">Mâle ♂ / Femelle ♀</p>
+    <div *ngIf="pokemon.sexe; else unknown" style="width: 95%; display: flex; height: 20px;" class="sexContainer"> 
+      <div 
+        [ngStyle]="{
+          'width': pokemon.sexe.male + '%',
+        }"
+        class="maleContainer">
+        {{ pokemon.sexe.male }}% 
+      </div>
+      <div 
+        [ngStyle]="{
+          'width': pokemon.sexe.female + '%',
+        }"
+        class="femaleContainer">
+        {{ pokemon.sexe.female }}%
+      </div>
+    </div>
+    <ng-template #unknown>
+      <div style="text-align: center;height: 20px;">
+        Unknown
+      </div>
+    </ng-template>
+  </div>
+
+  
+</div>
+
+<ng-template #loading>
+  <div class="container">
+    <p>Chargement des informations du Pokémon...</p>
+  </div>
+</ng-template>
