@@ -10,6 +10,8 @@ import { ComponentManipComponent } from './tp/component-manip/component-manip.co
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { UserParentComponent } from './tp/user-parent/user-parent.component';
+import { ObservablesComponent } from './tp/observable/observable.component';
+import { RandomComponent } from './tp/observable/random/random.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,6 +24,10 @@ export const routes: Routes = [
   { path: 'pokemon-list',component: PokemonListComponent},
   { path: 'pokemon/:id', component: PokemonComponent },
   { path: 'user', component: UserParentComponent },
+  { path: 'observable', component: ObservablesComponent },
+  { path: 'random', component: RandomComponent},
+
+
   // Test en mode lazy loading
   { path: 'app-component-manip', loadComponent: () => import('./tp/component-manip/component-manip.component').then(m => m.ComponentManipComponent) },
   { path: '**', loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent) },
