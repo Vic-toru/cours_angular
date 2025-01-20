@@ -1,6 +1,6 @@
 <div class="container-fluid" *ngIf="pokemon; else loading">
   <div class="pageTitle">
-    <h2>Informations du Pokémon</h2>
+    <h2>Informations sur {{ pokemon.name.fr }}</h2>
   </div>
   <div class="header">
   <img
@@ -11,12 +11,12 @@
     <input
       class="btn btnShiny"
       (click)="toggleShiny()"
-      [value]="isShiny ? 'Shiny' : 'Normal'"
+      [value]="isShiny ? 'Shiny' : 'Classique'"
       [ngClass]="{ colorNormal: !isShiny, colorShiny: isShiny }"
     />
   </div>
 
-  <div class="card" style="width: 25rem">
+  <div style="width: 25rem">
     <div class="card-header">Information générales</div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
@@ -37,61 +37,62 @@
       <li class="list-group-item">Taille : {{ pokemon.height }}</li>
       <li class="list-group-item">Poids : {{ pokemon.weight }}</li>
       <li class="list-group-item">
-        Taux de capture : {{ pokemon.catch_rate }}
+        Taux de capture : {{ (pokemon.catch_rate / maxStat) * 100 | number:'1.2-2' }} %
       </li>
     </ul>
-    
-  </div>
-
-  <div class="card" style="width: 25rem">
-    <div class="card-header">Groupe d'oeufs</div>
-    <ul
-      class="list-group list-group-flush"
-      *ngFor="let group of pokemon.egg_groups"
-    >
-      <li class="list-group-item">{{ group }}</li>
-    </ul>
-  </div>
-
-  <!-- Carte pour Sexe -->
-  <div class="card" style="width: 25rem">
-    <div class="card-header">Sexe</div>
-    <p class="card-text text-center align-bottom sexTitle">
-      Mâle ♂ / Femelle ♀
-    </p>
-    <div
-      *ngIf="pokemon.sexe; else unknown"
-      class="sexContainer"
-      style="width: 95%; display: flex; height: 20px"
-    >
-      <div
-        [ngStyle]="{
-          'width': pokemon.sexe.male + '%',
-        }"
-        class="maleContainer"
+    <div style="width: 25rem">
+      <div class="card-header">Groupe d'oeufs</div>
+      <ul
+        class="list-group list-group-flush"
+        *ngFor="let group of pokemon.egg_groups"
       >
-        {{ pokemon.sexe.male }}%
+        <li class="list-group-item">{{ group }}</li>
+      </ul>
+    <!-- Carte pour Sexe -->
+  
+      <div style="width: 25rem">
+        <div class="card-header">Sexe</div>
+        <p class="card-text text-center align-bottom sexTitle">
+          Mâle ♂ / Femelle ♀
+        </p>
+        <div
+          *ngIf="pokemon.sexe; else unknown"
+          class="sexContainer"
+          style="width: 95%; display: flex; height: 20px"
+        >
+          <div
+            [ngStyle]="{
+              'width': pokemon.sexe.male + '%',
+            }"
+            class="maleContainer"
+          >
+            {{ pokemon.sexe.male }}%
+          </div>
+          <div
+            [ngStyle]="{
+              'width': pokemon.sexe.female + '%',
+            }"
+            class="femaleContainer"
+          >
+            {{ pokemon.sexe.female }}%
+          </div>
+        </div>
+        <ng-template #unknown>
+          <div style="text-align: center; height: 20px">Unknown</div>
+        </ng-template>
       </div>
-      <div
-        [ngStyle]="{
-          'width': pokemon.sexe.female + '%',
-        }"
-        class="femaleContainer"
-      >
-        {{ pokemon.sexe.female }}%
-      </div>
+  
+  
     </div>
-    <ng-template #unknown>
-      <div style="text-align: center; height: 20px">Unknown</div>
-    </ng-template>
+  
   </div>
 
   <!-- Carte pour Statistiques -->
-  <div class="card" style="width: 25rem">
-    <div class="card-header">Statistiques</div>
+  <div style="width: 25rem">
+    <div class="card-header">Base stats</div>
     <div *ngFor="let stat of pokemon.stats | keyvalue" class="stat-container">
-      <!-- Nom de la statistique -->
-      <p>{{ stat.key }}</p>
+      <!-- Nom et valeur de la statistique -->
+      <p>{{ stat.key }} : {{ stat.value }}</p>
       <!-- Jauge de progression -->
       <div class="progress-bar">
         <div
@@ -99,8 +100,6 @@
           [ngStyle]="{ width: (stat.value / maxStat) * 100 + '%' }"
         ></div>
       </div>
-      <!-- Valeur de la statistique -->
-      <p>{{ stat.value }}</p>
     </div>
   </div>
 </div>

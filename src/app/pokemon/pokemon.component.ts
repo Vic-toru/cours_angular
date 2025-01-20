@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
 import { Pokemon } from '../pokeTypes/pokeTypes.component';
-import { KeyValuePipe, NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
+import { CommonModule, KeyValuePipe, NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [ NgFor, NgIf, NgStyle, NgClass , KeyValuePipe
+  imports: [ NgFor, NgIf, NgStyle, NgClass , KeyValuePipe , CommonModule
   ],
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.css'],
