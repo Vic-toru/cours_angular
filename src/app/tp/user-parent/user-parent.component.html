@@ -6,7 +6,7 @@
         <app-active-user [user]="user"></app-active-user>
     </div>
     <div class="data-user">
-    <app-user-data [user]="user"/>
+    <app-user-data (userUpdated)="updateUser($event)"/>
     </div>
   </div>
   

@@ -15,4 +15,7 @@ export class UserParentComponent {
     age: 16
   };
 
+  updateUser(updatedUser: { name: string, age: number }) {
+    this.user = updatedUser;
+  }
 }

@@ -9,15 +9,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-data.component.css'
 })
 export class UserDataComponent {
-  @Input() user: { name: string, age: number } | undefined;
+  name: string = '';
+  age: number = 0;
   @Output() userUpdated = new EventEmitter<{ name: string, age: number }>();
 
   updateUserData() {
-    if (this.user) {
-      this.userUpdated.emit({
-        name: this.user.name,
-        age: this.user.age
-      });
-    }
+    // Créez un objet avec les nouvelles valeurs
+    const updatedUser = { name: this.name, age: this.age };
+    
+    // Émet l'événement vers le parent
+    this.userUpdated.emit(updatedUser);
   }
+
 }
