@@ -1,0 +1,7 @@
+<div class="card bg-warning text-light" style="width: 25rem">
+    <div class="card-header">Formulaire d'édition</div>
+    <input [(ngModel)]="user!.name" name="nom" type="text" placeholder="Nom">
+    <input [(ngModel)]="user!.age" name="age" type="text" placeholder="Âge">
+    
+    <input value="Maj des data" type="button" (click)="updateUserData()">
+</div>

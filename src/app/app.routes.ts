@@ -9,6 +9,7 @@ import { BlogControlCenterComponent } from './blog-control-center/blog-control-c
 import { ComponentManipComponent } from './tp/component-manip/component-manip.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
+import { UserParentComponent } from './tp/user-parent/user-parent.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'app-component-manip',component: ComponentManipComponent},
   { path: 'pokemon-list',component: PokemonListComponent},
   { path: 'pokemon/:id', component: PokemonComponent },
+  { path: 'user', component: UserParentComponent },
   // Test en mode lazy loading
   { path: 'app-component-manip', loadComponent: () => import('./tp/component-manip/component-manip.component').then(m => m.ComponentManipComponent) },
   { path: '**', loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent) },

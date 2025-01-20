@@ -1,10 +1,36 @@
-.types{
+/* ================== */
+/* Mise en page globale */
+/* ================== */
+.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.pageTitle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+}
+
+/* ================== */
+/* Types Pokémon */
+/* ================== */
+.types {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly
 }
 
-.elemType{
+.elemType {
     border-radius: 18px;
     display: flex;
     justify-content: center;
@@ -18,25 +44,42 @@
 
 .elemType img {
     width: 25px;
-    height:25px;
+    height: 25px;
 }
 
-.btnShiny{
+/* ================== */
+/* Bouton Shiny */
+/* ================== */
+.btnShiny {
     color: white;
     font-size: 20px;
-    font-weight: bolder;
-    border: 1px solid black;
-    -webkit-text-stroke: 1px black;
-}
-.colorNormal{
-    background-color:silver;
+    font-weight: bold;
+    border: 2px solid black;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s;
 }
 
-.colorShiny{
-    background-color:goldenrod;
-} 
+.btnShiny:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
 
-.sexContainer{
+.colorNormal {
+    background-color: silver;
+    box-shadow: 0px 4px 8px rgba(192, 192, 192, 0.5);
+}
+
+.colorShiny {
+    background-color: goldenrod;
+    box-shadow: 0px 4px 8px rgba(218, 165, 32, 0.7);
+}
+
+/* ================== */
+/* Gestion Sexe Pokémon */
+/* ================== */
+.sexContainer {
     border-radius: 80px;
     border: 1px solid black;
     border-radius: 15px;
@@ -44,26 +87,123 @@
     margin: auto;
     margin-bottom: 10px;
 }
-.maleContainer{
+
+.maleContainer {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     background-color: cornflowerblue;
     color: white;
     font-size: 12px;
-font-weight: bolder;
-text-align: center;
+    font-weight: bolder;
+    text-align: center;
 }
-.femaleContainer{
+
+.femaleContainer {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     background-color: hotpink;
     color: white;
-font-size: 12px;
-font-weight: bolder;
-text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+    text-align: center;
 }
 
-.sexTitle{
+.sexTitle {
     margin-bottom: unset;
 }
+/* ================== */
+/* Statistiques Pokémon */
+/* ================== */
+.stat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 10px 0;
+}
 
+.progress-bar {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    max-width: 300px;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #b3b3b3;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50 0%, #81c784 100%);
+    transition: width 0.3s ease;
+}
+
+.progress-bar:hover .progress {
+    opacity: 0.9;
+}
+
+.stat-container p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+}
+
+/* ================== */
+/* Cartes */
+/* ================== */
+.card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 10px auto; /* Centrage horizontal */
+    max-width: 25rem; /* Limite maximale pour éviter une largeur excessive */
+    width: 100%; /* La card occupe toute la largeur disponible dans sa parent */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Étire le contenu de manière cohérente */
+}
+
+.card-header {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+}
+
+.list-group-item {
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between; /* Ajoute une séparation élégante */
+    align-items: center;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.card p,
+.card ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* ================== */
+/* Mise en page pour les cartes */
+/* ================== */
+.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Ajoute un espace cohérent entre les cartes */
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}

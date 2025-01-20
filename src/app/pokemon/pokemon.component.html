@@ -1,10 +1,12 @@
 <div class="container-fluid" *ngIf="pokemon; else loading">
-  <h2>Informations du Pokémon</h2>
+  <div class="pageTitle">
+    <h2>Informations du Pokémon</h2>
+  </div>
+  <div class="header">
   <img
     [src]="isShiny ? pokemon.sprites.shiny : pokemon.sprites.regular"
     [alt]="pokemon.name.fr"
   />
-  <div class="header">
     <h3>#{{ pokemon.pokedex_id }} - {{ pokemon.name.fr }}</h3>
     <input
       class="btn btnShiny"
@@ -38,15 +40,7 @@
         Taux de capture : {{ pokemon.catch_rate }}
       </li>
     </ul>
-  </div>
-  <div class="card" style="width: 25rem">
-    <div class="card-header">Talents</div>
-    <ul
-      class="list-group list-group-flush"
-      *ngFor="let talent of pokemon.talents"
-    >
-      <li class="list-group-item">{{ talent.name }}</li>
-    </ul>
+    
   </div>
 
   <div class="card" style="width: 25rem">
@@ -59,34 +53,58 @@
     </ul>
   </div>
 
+  <!-- Carte pour Sexe -->
   <div class="card" style="width: 25rem">
     <div class="card-header">Sexe</div>
-    <p class="card-text text-center align-bottom sexTitle">Mâle ♂ / Femelle ♀</p>
-    <div *ngIf="pokemon.sexe; else unknown" style="width: 95%; display: flex; height: 20px;" class="sexContainer"> 
-      <div 
+    <p class="card-text text-center align-bottom sexTitle">
+      Mâle ♂ / Femelle ♀
+    </p>
+    <div
+      *ngIf="pokemon.sexe; else unknown"
+      class="sexContainer"
+      style="width: 95%; display: flex; height: 20px"
+    >
+      <div
         [ngStyle]="{
           'width': pokemon.sexe.male + '%',
         }"
-        class="maleContainer">
-        {{ pokemon.sexe.male }}% 
+        class="maleContainer"
+      >
+        {{ pokemon.sexe.male }}%
       </div>
-      <div 
+      <div
         [ngStyle]="{
           'width': pokemon.sexe.female + '%',
         }"
-        class="femaleContainer">
+        class="femaleContainer"
+      >
         {{ pokemon.sexe.female }}%
       </div>
     </div>
     <ng-template #unknown>
-      <div style="text-align: center;height: 20px;">
-        Unknown
-      </div>
+      <div style="text-align: center; height: 20px">Unknown</div>
     </ng-template>
   </div>
 
-  
+  <!-- Carte pour Statistiques -->
+  <div class="card" style="width: 25rem">
+    <div class="card-header">Statistiques</div>
+    <div *ngFor="let stat of pokemon.stats | keyvalue" class="stat-container">
+      <!-- Nom de la statistique -->
+      <p>{{ stat.key }}</p>
+      <!-- Jauge de progression -->
+      <div class="progress-bar">
+        <div
+          class="progress"
+          [ngStyle]="{ width: (stat.value / maxStat) * 100 + '%' }"
+        ></div>
+      </div>
+      <!-- Valeur de la statistique -->
+      <p>{{ stat.value }}</p>
+    </div>
+  </div>
 </div>
+
 
 <ng-template #loading>
   <div class="container">

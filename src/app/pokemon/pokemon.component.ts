@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
 import { Pokemon } from '../pokeTypes/pokeTypes.component';
-import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
+import { KeyValuePipe, NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [ NgFor, NgIf, NgStyle, NgClass
+  imports: [ NgFor, NgIf, NgStyle, NgClass , KeyValuePipe
   ],
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.css'],
@@ -14,6 +14,8 @@ import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 export class PokemonComponent implements OnInit {
   pokemon: Pokemon | undefined;  
   isShiny: boolean = false;
+  stats: { name: string; value: number }[] = [];
+  maxStat: number = 255;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +29,25 @@ export class PokemonComponent implements OnInit {
     }
   }  
 
+  // async loadPokemonDetails(id: string) {
+  //   try {
+  //     const pokemons = await this.pokemonService.fetchPokemonList(
+  //       `https://tyradex.vercel.app/api/v1/pokemon/${id}`
+  //     );
+  //     console.log('Données récupérées :', pokemons);
+  
+  //     // Si l'API retourne un tableau avec un seul élément, on récupère le premier élément
+  //     if (pokemons && pokemons.length > 0) {
+  //       this.pokemon = pokemons[0];  // Récupérer le premier élément du tableau
+  //     } else {
+  //       console.error('Aucun Pokémon trouvé pour cet ID.');
+  //     }
+  
+  //   } catch (error) {
+  //     console.error('Erreur lors de la récupération des données :', error);
+  //   }
+  // }
+  
   async loadPokemonDetails(id: string) {
     try {
       const pokemons = await this.pokemonService.fetchPokemonList(
@@ -34,18 +55,15 @@ export class PokemonComponent implements OnInit {
       );
       console.log('Données récupérées :', pokemons);
   
-      // Si l'API retourne un tableau avec un seul élément, on récupère le premier élément
       if (pokemons && pokemons.length > 0) {
-        this.pokemon = pokemons[0];  // Récupérer le premier élément du tableau
+        this.pokemon = pokemons[0]; // Récupération des données
       } else {
         console.error('Aucun Pokémon trouvé pour cet ID.');
       }
-  
     } catch (error) {
       console.error('Erreur lors de la récupération des données :', error);
     }
   }
-  
 
   toggleShiny() {
     this.isShiny = !this.isShiny;
