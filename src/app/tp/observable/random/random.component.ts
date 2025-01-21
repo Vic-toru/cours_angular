@@ -30,13 +30,11 @@ export class RandomComponent {
     if (!this.subscription) {
       this.subscription = randomNumbers$.subscribe(() => {
         if (this.numbers.length >= 10) {
-          // Retirer le premier élément (le plus ancien)
           this.numbers.shift();
         }
-
         const randomNum = Math.floor(Math.random() * 100) + 1; // Générer un nombre aléatoire
         console.log(`Nombre généré : ${randomNum}`);
-        this.numbers.push(randomNum); // Ajouter le nombre généré à la fin de la liste
+        this.numbers.push(randomNum); 
       });
 
       console.log('Abonnement effectué.');
@@ -85,6 +83,5 @@ export class RandomComponent {
   get filteredNumbers(): number[] {
     return this.isDisplay ? this.numbers.filter(num => num % 2 === 0) : this.numbers;
   }
-
 
 }
