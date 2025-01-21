@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <h1 class="text-center text-primary">Leçon : Les Pipes en Angular</h1>
+    <p class="text-muted">Les pipes permettent de transformer les données dans les templates Angular de manière simple et réutilisable.</p>
+  
+    <!-- Section : Pipes intégrés -->
+    <section class="mb-4">
+      <h3 class="text-success">1. Les Pipes intégrés</h3>
+      <p>Voici quelques exemples des pipes intégrés les plus courants :</p>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Date :</strong> {{ currentDate | date:'fullDate' }}
+          <span class="badge bg-secondary">Exemple : {{ currentDate }}</span>
+        </li>
+        <li class="list-group-item">
+          <strong>Uppercase :</strong> {{ exampleText | uppercase }}
+          <span class="badge bg-secondary">Exemple : {{ exampleText }}</span>
+        </li>
+        <li class="list-group-item">
+          <strong>Currency :</strong> {{ productPrice | currency:'EUR':'symbol' }}
+          <span class="badge bg-secondary">Exemple : {{ productPrice }}</span>
+        </li>
+        <li class="list-group-item">
+          <strong>Decimal :</strong> {{ decimalValue | number:'1.2-2' }}
+          <span class="badge bg-secondary">Exemple : {{ decimalValue }}</span>
+        </li>
+        <li class="list-group-item">
+          <strong>JSON :</strong>
+          <pre>{{ jsonData | json }}</pre>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mb-4">
+        <h3 class="text-success">2. Pipe Personnalisé</h3>
+        <p>
+            Implémentez le pipe personnalisé <strong>ReverseTextPipe</strong> qui inverse le contenu d'une chaîne de caractères.
+        </p>
+        <div class="card bg-light p-3">
+            <strong>Texte original :</strong> {{ exampleText }}
+            <strong>Texte Inversé :</strong> {{ exampleText | reverse }}
+        </div>
+    </section>

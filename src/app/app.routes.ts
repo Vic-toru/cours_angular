@@ -12,6 +12,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { UserParentComponent } from './tp/user-parent/user-parent.component';
 import { ObservablesComponent } from './tp/observable/observable.component';
 import { RandomComponent } from './tp/observable/random/random.component';
+import { PipesComponent } from './tp/pipes/pipes.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -26,6 +27,8 @@ export const routes: Routes = [
   { path: 'user', component: UserParentComponent },
   { path: 'observable', component: ObservablesComponent },
   { path: 'random', component: RandomComponent},
+  { path: 'pipes', component: PipesComponent},
+
 
 
   // Test en mode lazy loading

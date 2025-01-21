@@ -36,7 +36,6 @@ export class RandomComponent {
         console.log(`Nombre généré : ${randomNum}`);
         this.numbers.push(randomNum); 
       });
-
       console.log('Abonnement effectué.');
     }
   }
