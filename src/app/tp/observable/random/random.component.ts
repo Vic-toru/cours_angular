@@ -1,10 +1,11 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Observable, Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-random',
-  imports: [NgFor],
+  imports: [NgFor , FormsModule , NgIf],
   templateUrl: './random.component.html',
   styleUrls: ['./random.component.css'] // Correction : 'styleUrl' → 'styleUrls'
 })
@@ -12,6 +13,7 @@ export class RandomComponent {
   numbers: number[] = []; // Liste des nombres générés
   private subscription: Subscription | null = null; // Abonnement à l'observable
   paused = false; // État de la pause
+  isDisplay:boolean = false;
 
   /**
    * Démarre le générateur de nombres aléatoires.
@@ -27,9 +29,14 @@ export class RandomComponent {
     // S'abonner à l'Observable
     if (!this.subscription) {
       this.subscription = randomNumbers$.subscribe(() => {
+        if (this.numbers.length >= 10) {
+          // Retirer le premier élément (le plus ancien)
+          this.numbers.shift();
+        }
+
         const randomNum = Math.floor(Math.random() * 100) + 1; // Générer un nombre aléatoire
         console.log(`Nombre généré : ${randomNum}`);
-        this.numbers.push(randomNum); // Ajouter le nombre généré à la liste
+        this.numbers.push(randomNum); // Ajouter le nombre généré à la fin de la liste
       });
 
       console.log('Abonnement effectué.');
@@ -74,4 +81,10 @@ export class RandomComponent {
       console.log('Désabonnement effectué.');
     }
   }
+
+  get filteredNumbers(): number[] {
+    return this.isDisplay ? this.numbers.filter(num => num % 2 === 0) : this.numbers;
+  }
+
+
 }
