@@ -40,3 +40,39 @@
             <strong>Texte Inversé :</strong> {{ exampleText | reverse }}
         </div>
     </section>
+
+    <section class="mb-4">
+        <h3 class="text-success">3. Exercice Interactif</h3>
+        <p>Saisissez vos propres données pour expérimenter avec les pipes :</p>
+        <form class="bg-warning-subtle p-3" #form="ngForm">
+          <div class="mb-3">
+            <label for="customText" class="form-label">Texte :</label>
+            <input
+              id="customText"
+              type="text"
+              class="form-control"
+              [(ngModel)]="customText"
+              placeholder="Saisissez un texte..."
+              name="customText"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="customPrice" class="form-label">Prix :</label>
+            <input
+              id="customPrice"
+              type="number"
+              class="form-control"
+              [(ngModel)]="customPrice"
+              placeholder="Saisissez un montant..."
+              name="customPrice"
+            />
+          </div>
+        </form>
+        <div class="card bg-light p-3">
+          <p><strong>Texte original :</strong> {{ customText }}</p>
+          <p><strong>Texte en majuscules :</strong> {{ customText | uppercase }}</p>
+          <p><strong>Texte inversé :</strong> {{ customText | reverse }}</p>
+          <p><strong>Prix formaté :</strong> {{ customPrice | currency:'EUR':'symbol' }}</p>
+        </div>
+      </section>
+    </div>

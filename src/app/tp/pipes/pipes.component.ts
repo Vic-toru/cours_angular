@@ -36,5 +36,7 @@ export class PipesComponent {
   decimalValue: number = 42.56789;
   jsonData = { name: 'Angular', version: 19 };
   interactiveText: string = 'Hello, Angular!';
+  customText: string = '';
+  customPrice: number = 0;
 }
 
