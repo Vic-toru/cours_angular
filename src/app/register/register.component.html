@@ -1,0 +1,26 @@
+
+<div class="container-fluid">
+
+</div><div class="container mt-5">
+    <h1>Inscription avec Email et Mot de Passe</h1>
+
+    <div>
+      <input [(ngModel)]="email" type="email" placeholder="Email" class="form-control mb-3" />
+      <input [(ngModel)]="password" type="password" placeholder="Mot de passe" class="form-control mb-3" />
+
+      <button (click)="signUp()" class="btn btn-primary">S'inscrire</button>
+    </div>
+
+    <div *ngIf="user">
+      <p>Utilisateur inscrit: {{ user.email }}</p>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger mt-3">
+      <p>{{ error }}</p>
+    </div>
+
+
+
+
+    
+  </div>

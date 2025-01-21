@@ -31,3 +31,10 @@
   transition: background-color 0.3s ease;
 }
 
+.auth{
+  display: flex;
+}
+
+.connexion , .register , .deco{
+  width: 50px;
+}
