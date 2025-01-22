@@ -127,4 +127,6 @@ export class PokemonComponent implements OnInit {
         break;
     }
   }
+
+  
 }

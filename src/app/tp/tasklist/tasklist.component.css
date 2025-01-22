@@ -1,0 +1,8 @@
+span {
+    padding: 0 10px 0 5px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between
+}

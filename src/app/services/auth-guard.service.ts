@@ -35,11 +35,12 @@ export class AuthGuardService{
     this.userSubject.next(user); // Met à jour le sujet avec les nouvelles données de l'utilisateur
   }
 
-  // // Déconnexion de l'utilisateur
-  // logout(): void {
-  //   localStorage.removeItem('user');
-  //   this.userSubject.next(null); // Met à jour l'état de l'utilisateur à null
-  // }
+  // Déconnexion de l'utilisateur
+  signOut(): void {
+    localStorage.removeItem('user');
+    this.userSubject.next(null); // Met à jour l'état de l'utilisateur à null
+  }
+  
 
   // Récupérer les informations de l'utilisateur actuel
   getUser(): any {

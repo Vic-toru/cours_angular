@@ -207,3 +207,32 @@
     padding: 20px;
     background-color: #f9f9f9;
 }
+
+/* Conteneur principal de la ligne d'évolutions */
+.evo-line {
+    display: flex;               /* Utilisation de Flexbox pour aligner les éléments sur une ligne */
+    justify-content: space-around; /* Espacement égal entre les éléments */
+    align-items: center;         /* Centrer les éléments verticalement */
+    flex-wrap: wrap;             /* Permet aux éléments de se mettre sur la ligne suivante si nécessaire */
+    margin-top: 10px;            /* Espacement au-dessus de la ligne */
+    margin-bottom: 10px;  
+  }
+  
+  /* Pré-évolutions - centrer l'image et le texte */
+
+  .evo-item{
+    text-align: center;
+  }
+  
+  /* Style spécifique pour les images dans la ligne */
+  .evo-item img {
+    max-width: 200px;           
+    height: auto;              
+    margin-top: 5px;         
+  }
+
+  .evo-cond{
+    display: flex;
+    align-items: center;
+  }
+

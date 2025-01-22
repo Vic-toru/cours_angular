@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <h2>Liste des tâches</h2>
+    <form (ngSubmit)="addTask()" class="d-flex mb-3">
+      <input
+        [(ngModel)]="newTask.title"
+        name="task"
+        type="text"
+        placeholder="Nouvelle tâche"
+        class="form-control me-2"
+      />
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+
+    <ul class="list-group">
+      <li *ngFor="let task of tasks" class="list-group-item">
+        {{ task.title }}
+        <span *ngIf="task.status === 'pending'" class="bg-warning text-light rounded">⌛ En attente</span>
+        <span *ngIf="task.status === 'completed'" class="bg-success text-light rounded">✅ Terminé</span>
+         <button
+  (click)="updateStatus(task)"
+  class="btn btn-primary btn-sm me-2"
+  title="Changer le statut"
+>
+  Mettre le status à jour
+</button>
+        <button
+        *ngIf="task.id"
+        (click)="delTask(task.id)"
+        class="btn btn-danger btn-sm"
+        title="Supprimer la tâche"
+      >
+        Supprimer la tâche🗑️
+      </button>
+      </li>
+    </ul>
+  </div>

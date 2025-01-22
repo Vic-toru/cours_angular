@@ -104,6 +104,9 @@
               <li class="dropdown-item me-2">
                 <a routerLink="/login" class="text-light">TP : Login</a>
               </li>
+              <li class="dropdown-item me-2">
+                <a routerLink="/tasklist" class="text-light">TP : Tasklist</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -133,7 +136,7 @@
             alt="Connexion"
           />
         </div>
-        <div routerLink="/register" (click)="signOut()" *ngIf="user">
+        <div routerLink="/register" (click)="logOut()" *ngIf="user">
           <img class="deco" src="../assets/deco.png" alt="Inscription" />
         </div>
       </div>

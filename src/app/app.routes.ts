@@ -16,6 +16,7 @@ import { PipesComponent } from './tp/pipes/pipes.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { TaskListComponent } from './tp/tasklist/tasklist.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +34,8 @@ export const routes: Routes = [
   { path: 'pipes', canActivate:[AuthGuardService] , component: PipesComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'tasklist', canActivate:[AuthGuardService] , component: TaskListComponent },
+
 
 
 
