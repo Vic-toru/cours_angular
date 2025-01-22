@@ -19,8 +19,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'list-friends', canActivate:[AuthGuardService] , component: ListFriendsComponent },
-  { path: 'data-binding', canActivate:[AuthGuardService] , component: DataBindingComponent },
+  { path: 'list-friends', canActivate: [AuthGuardService] , component: ListFriendsComponent },
+  { path: 'data-binding', canActivate: [AuthGuardService] , component: DataBindingComponent },
   { path: 'list-cats', canActivate:[AuthGuardService] , component: ListCatsComponent },
   { path: 'directives', canActivate:[AuthGuardService] , component: DirectivesComponent },
   { path: 'blog', canActivate:[AuthGuardService] , component: BlogControlCenterComponent },

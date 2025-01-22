@@ -22,11 +22,12 @@ export class AuthGuardService{
           observer.next(true);  // Si l'utilisateur est authentifié, on autorise l'accès
         } else {
           observer.next(false); // Si l'utilisateur n'est pas authentifié, on redirige vers la page de login
-          this.router.navigate(['/app-login']); // Redirection vers le login
+          this.router.navigate(['/login']); // Redirection vers le login
         }
       });
     });
   }
+
 
   // Connexion de l'utilisateur (par exemple après un login)
   login(user: any): void {
@@ -34,11 +35,11 @@ export class AuthGuardService{
     this.userSubject.next(user); // Met à jour le sujet avec les nouvelles données de l'utilisateur
   }
 
-  // Déconnexion de l'utilisateur
-  logout(): void {
-    localStorage.removeItem('user');
-    this.userSubject.next(null); // Met à jour l'état de l'utilisateur à null
-  }
+  // // Déconnexion de l'utilisateur
+  // logout(): void {
+  //   localStorage.removeItem('user');
+  //   this.userSubject.next(null); // Met à jour l'état de l'utilisateur à null
+  // }
 
   // Récupérer les informations de l'utilisateur actuel
   getUser(): any {
