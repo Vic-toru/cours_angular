@@ -1,0 +1,37 @@
+span {
+    padding: 0 10px 0 5px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between
+}
+
+.dab{
+    width: 50px;
+    padding: 5px;
+}
+.completed{
+    float: right;
+}
+
+.congrats{
+    display: flex;
+    font-weight: 900;
+    background-color: lime;
+    color: white;
+    align-items: center
+}
+
+.drop-mic{
+    width: 500px;
+    padding: 50px;
+}
+
+.tasks{
+    margin-top: 50px;
+}
+.congrats{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

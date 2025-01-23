@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TaskListComponent } from './tp/tasklist/tasklist.component';
+import { SignalsComponent } from './tp/signals/signals.component';
+import { TasklistSignalComponent } from './eval/tasklist-signal/tasklist-signal.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,8 +37,8 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tasklist', canActivate:[AuthGuardService] , component: TaskListComponent },
-
-
+  { path: 'signals', canActivate:[AuthGuardService] , component: SignalsComponent },
+  { path: 'eval', canActivate:[AuthGuardService] , component: TasklistSignalComponent },
 
 
   // Test en mode lazy loading

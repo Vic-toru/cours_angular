@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="card tasks" style="width: 80vw">
+    <div class="card-header">
+      <h2>Suivi des tâches</h2>
+    </div>
+    <div>
+      <input
+        type="text"
+        [(ngModel)]="newTaskTitle"
+        placeholder="Nouvelle tâche"
+        class="form-control me-2"
+      />
+      <select class="form-select" [(ngModel)]="newTaskPriority">
+        <option value="haute">Haute</option>
+        <option value="moyenne">Moyenne</option>
+        <option value="basse">Basse</option>
+      </select>
+      <button (click)="addTask()" class="btn btn-primary">Ajouter</button>
+    </div>
+    <div class="container-fluid">
+      <ul class="list-group">
+        <li
+          *ngFor="let task of sortedTasks()"
+          class="list-group-item d-flex align-items-center"
+        >
+          <span
+            [ngStyle]="{ 'font-weight': task.complete ? 'normal' : 'bold' }"
+          >
+            {{ task.title }} (Priorité : {{ task.priority }})
+          </span>
+          <span
+            *ngIf="task.complete === true"
+            class="bg-success text-light rounded"
+            >Tâche complétée
+            <img src="../assets/dab.png" alt="emoji_dab" class="dab"
+          /></span>
+          <button
+            (click)="toggleComplete(task)"
+            class="btn btn-primary completed"
+          >
+            Marquer comme complétée
+          </button>
+          <button (click)="delTask(task)" class="btn btn-danger">
+            Supprimer 🗑️
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br /><br /><br />
+  <div class="card stats" style="width: 80vw">
+    <div class="card-header">
+      <h2>Statistiques des tâches</h2>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Tâches complétées : {{ completedCount() }}
+      </li>
+      <li class="list-group-item">Tâches restantes : {{ remainingCount() }}</li>
+    </ul>
+  </div>
+  <div *ngIf="allTasksCompleted()" class="card congrats" style="width: 80vw">
+    <h1>Félicitation, vous avez complété toutes les tâches</h1>
+    <img src="../assets/drop-mic.gif" alt="Drop the mic" class="drop-mic" />
+  </div>
+</div>
